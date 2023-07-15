@@ -3,8 +3,6 @@
  * \brief [Linear search
  * algorithm](https://en.wikipedia.org/wiki/Linear_search)
  *
- * @author Unknown author
- * @author [Ritika Mukherjee](https://github.com/ritikaa17)
  */
 
 #include <cassert>   /// for assert

@@ -1,22 +1,6 @@
 /**
- *
- * \file
- * \brief [Disjoint Sets Data Structure
- * (Disjoint Sets)](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
- *
- * \author [leoyang429](https://github.com/leoyang429)
- *
- * \details
- * A disjoint set data structure (also called union find or merge find set)
- * is a data structure that tracks a set of elements partitioned into a number
- * of disjoint (non-overlapping) subsets.
- * Some situations where disjoint sets can be used are-
- * to find connected components of a graph, kruskal's algorithm for finding
- * Minimum Spanning Tree etc.
- * There are two operation which we perform on disjoint sets -
- * 1) Union
- * 2) Find
- *
+ @brief [Disjoint Sets Data Structure (Disjoint Sets)](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
+ @details A disjoint set data structure (also called union find or merge find set) is a data structure that tracks a set of elements partitioned into a number of disjoint (non-overlapping) subsets. Some situations where disjoint sets can be used are- to find connected components of a graph, kruskal's algorithm for finding Minimum Spanning Tree etc. There are two operation which we perform on disjoint sets - 1) Union 2) Find
  */
 
 #include <iostream>
@@ -35,11 +19,11 @@ vector<int> root, rank;
  *
  */
 void CreateSet(int n) {
-    root = vector<int>(n + 1);
-    rank = vector<int>(n + 1, 1);
-    for (int i = 1; i <= n; ++i) {
-        root[i] = i;
-    }
+  root = vector<int>(n + 1);
+  rank = vector<int>(n + 1, 1);
+  for (int i = 1; i <= n; ++i) {
+    root[i] = i;
+  }
 }
 
 /**
@@ -51,10 +35,10 @@ void CreateSet(int n) {
  *
  */
 int Find(int x) {
-    if (root[x] == x) {
-        return x;
-    }
-    return root[x] = Find(root[x]);
+  if (root[x] == x) {
+    return x;
+  }
+  return root[x] = Find(root[x]);
 }
 
 /**
@@ -64,7 +48,9 @@ int Find(int x) {
  * @param y element of some set
  *
  */
-bool InSameUnion(int x, int y) { return Find(x) == Find(y); }
+bool InSameUnion(int x, int y) {
+  return Find(x) == Find(y);
+}
 
 /**
  *
@@ -76,39 +62,39 @@ bool InSameUnion(int x, int y) { return Find(x) == Find(y); }
  *
  */
 void Union(int x, int y) {
-    int a = Find(x), b = Find(y);
-    if (a != b) {
-        if (rank[a] < rank[b]) {
-            root[a] = b;
-        } else if (rank[a] > rank[b]) {
-            root[b] = a;
-        } else {
-            root[a] = b;
-            ++rank[b];
-        }
+  int a = Find(x), b = Find(y);
+  if (a != b) {
+    if (rank[a] < rank[b]) {
+      root[a] = b;
+    } else if (rank[a] > rank[b]) {
+      root[b] = a;
+    } else {
+      root[a] = b;
+      ++rank[b];
     }
+  }
 }
 
 /** Main function */
 int main() {
-    // tests CreateSet & Find
-    int n = 100;
-    CreateSet(n);
-    for (int i = 1; i <= 100; ++i) {
-        if (root[i] != i) {
-            cout << "Fail" << endl;
-            break;
-        }
+  // tests CreateSet & Find
+  int n = 100;
+  CreateSet(n);
+  for (int i = 1; i <= 100; ++i) {
+    if (root[i] != i) {
+      cout << "Fail" << endl;
+      break;
     }
-    // tests InSameUnion & Union
-    cout << "1 and 2 are initially not in the same subset" << endl;
-    if (InSameUnion(1, 2)) {
-        cout << "Fail" << endl;
-    }
-    Union(1, 2);
-    cout << "1 and 2 are now in the same subset" << endl;
-    if (!InSameUnion(1, 2)) {
-        cout << "Fail" << endl;
-    }
-    return 0;
+  }
+  // tests InSameUnion & Union
+  cout << "1 and 2 are initially not in the same subset" << endl;
+  if (InSameUnion(1, 2)) {
+    cout << "Fail" << endl;
+  }
+  Union(1, 2);
+  cout << "1 and 2 are now in the same subset" << endl;
+  if (!InSameUnion(1, 2)) {
+    cout << "Fail" << endl;
+  }
+  return 0;
 }

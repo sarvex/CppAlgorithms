@@ -17,64 +17,61 @@
  */
 template <class ValueType>
 class stack {
- public:
-    using value_type = ValueType;
+  public:
+  using value_type = ValueType;
 
-    /** Show stack */
-    void display() const {
-        std::cout << "Top --> ";
-        display_all(this->stackTop.get());
-        std::cout << '\n';
-        std::cout << "Size of stack: " << size << std::endl;
+  /** Show stack */
+  void display() const {
+    std::cout << "Top --> ";
+    display_all(this->stackTop.get());
+    std::cout << '\n';
+    std::cout << "Size of stack: " << size << std::endl;
+  }
+
+  std::vector<value_type> toVector() const { return push_all_to_vector(this->stackTop.get(), this->size); }
+
+  private:
+  void ensureNotEmpty() const {
+    if (isEmptyStack()) {
+      throw std::invalid_argument("Stack is empty.");
     }
+  }
 
-    std::vector<value_type> toVector() const {
-        return push_all_to_vector(this->stackTop.get(), this->size);
-    }
+  public:
+  /** Determine whether the stack is empty */
+  bool isEmptyStack() const { return (stackTop == nullptr); }
 
- private:
-    void ensureNotEmpty() const {
-        if (isEmptyStack()) {
-            throw std::invalid_argument("Stack is empty.");
-        }
-    }
+  /** Add new item to the stack */
+  void push(const value_type& item) {
+    auto newNode = std::make_shared<Node<value_type>>();
+    newNode->data = item;
+    newNode->next = stackTop;
+    stackTop = newNode;
+    size++;
+  }
 
- public:
-    /** Determine whether the stack is empty */
-    bool isEmptyStack() const { return (stackTop == nullptr); }
+  /** Return the top element of the stack */
+  value_type top() const {
+    ensureNotEmpty();
+    return stackTop->data;
+  }
 
-    /** Add new item to the stack */
-    void push(const value_type& item) {
-        auto newNode = std::make_shared<Node<value_type>>();
-        newNode->data = item;
-        newNode->next = stackTop;
-        stackTop = newNode;
-        size++;
-    }
+  /** Remove the top element of the stack */
+  void pop() {
+    ensureNotEmpty();
+    stackTop = stackTop->next;
+    size--;
+  }
 
-    /** Return the top element of the stack */
-    value_type top() const {
-        ensureNotEmpty();
-        return stackTop->data;
-    }
+  /** Clear stack */
+  void clear() {
+    stackTop = nullptr;
+    size = 0;
+  }
 
-    /** Remove the top element of the stack */
-    void pop() {
-        ensureNotEmpty();
-        stackTop = stackTop->next;
-        size--;
-    }
-
-    /** Clear stack */
-    void clear() {
-        stackTop = nullptr;
-        size = 0;
-    }
-
- private:
-    std::shared_ptr<Node<value_type>> stackTop =
-        {};                /**< Pointer to the stack */
-    std::size_t size = 0;  ///< size of stack
+  private:
+  std::shared_ptr<Node<value_type>> stackTop = {}; /**< Pointer to the stack */
+  std::size_t size = 0;                            ///< size of stack
 };
 
 #endif  // DATA_STRUCTURES_STACK_HPP_

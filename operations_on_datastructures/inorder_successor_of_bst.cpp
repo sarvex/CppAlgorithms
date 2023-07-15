@@ -30,8 +30,7 @@
  *      * In order successor would be the deepest node in this path for which
  * given node is in left subtree.
  *
- * @author [Nitin Sharma](https://github.com/foo290)
- * */
+ */
 
 #include <cassert>   ///  for assert
 #include <iostream>  ///  for IO Operations

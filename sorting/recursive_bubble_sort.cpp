@@ -1,20 +1,20 @@
 /**
  * @file
- * @author [Aditya Prakash](https://adityaprakash.tech)
- * @brief This is an implementation of a recursive version of the [Bubble sort algorithm](https://www.geeksforgeeks.org/recursive-bubble-sort/)
+ * @brief This is an implementation of a recursive version of the [Bubble sort
+ algorithm](https://www.geeksforgeeks.org/recursive-bubble-sort/)
  *
  * @details
  * The working principle of the Bubble sort algorithm.
 
  * Bubble sort is a simple sorting algorithm used to rearrange a set of ascending or descending order elements.
  * Bubble sort gets its name from the fact that data "bubbles" to the top of the dataset.
- 
+
  * ### Algorithm
 
  * What is Swap?
 
  * Swapping two numbers means that we interchange their values.
- * Often, an additional variable is required for this operation. 
+ * Often, an additional variable is required for this operation.
  * This is further illustrated in the following:
 
  * void swap(int x, int y){
@@ -48,11 +48,11 @@
  * complexity
 */
 
-#include <cassert>   /// for assert
-#include <iostream>  /// for IO operations
-#include <vector>    /// for std::vector
-#include <array>     /// for std::array
-#include <algorithm> /// for std::is_sorted
+#include <algorithm>  /// for std::is_sorted
+#include <array>      /// for std::array
+#include <cassert>    /// for assert
+#include <iostream>   /// for IO operations
+#include <vector>     /// for std::vector
 
 /**
  * @namespace sorting
@@ -60,32 +60,32 @@
  */
 namespace sorting {
 
-/**
- * @brief This is an implementation of the recursive_bubble_sort. A vector is passed
- * to the function which is then dereferenced, so that the changes are
- * reflected in the original vector. It also accepts a second parameter of
- * type `int` and name `n`, which is the size of the array.
- * 
- * @tparam T type of data variables in the array
- * @param nums our array of elements.
- * @param n size of the array
- */
-template <typename T>
-void recursive_bubble_sort(std::vector<T> *nums, uint64_t n) {
+  /**
+   * @brief This is an implementation of the recursive_bubble_sort. A vector is passed
+   * to the function which is then dereferenced, so that the changes are
+   * reflected in the original vector. It also accepts a second parameter of
+   * type `int` and name `n`, which is the size of the array.
+   *
+   * @tparam T type of data variables in the array
+   * @param nums our array of elements.
+   * @param n size of the array
+   */
+  template <typename T>
+  void recursive_bubble_sort(std::vector<T> *nums, uint64_t n) {
     if (n == 1) {  //!< base case; when size of the array is 1
-        return;
+      return;
     }
 
     for (uint64_t i = 0; i < n - 1; i++) {  //!< iterating over the entire array
-        //!< if a larger number appears before the smaller one, swap them.
-        if ((*nums)[i] > (*nums)[i + 1]) {
-            std::swap((*nums)[i], (*nums)[i + 1]);
-        }
+      //!< if a larger number appears before the smaller one, swap them.
+      if ((*nums)[i] > (*nums)[i + 1]) {
+        std::swap((*nums)[i], (*nums)[i + 1]);
+      }
     }
 
     //!< calling the function after we have fixed the last element
     recursive_bubble_sort(nums, n - 1);
-}
+  }
 }  // namespace sorting
 
 /**
@@ -93,57 +93,56 @@ void recursive_bubble_sort(std::vector<T> *nums, uint64_t n) {
  * @returns void
  */
 static void test() {
-    // 1st example. Creating an array of type `int`.
-    std::cout << "1st test using `int`\n";
-    const uint64_t size = 6;
-    std::vector<int64_t> arr;
-    // populating the array
-    arr.push_back(22);
-    arr.push_back(46);
-    arr.push_back(94);
-    arr.push_back(12);
-    arr.push_back(37);
-    arr.push_back(63);
-    // array populating ends
+  // 1st example. Creating an array of type `int`.
+  std::cout << "1st test using `int`\n";
+  const uint64_t size = 6;
+  std::vector<int64_t> arr;
+  // populating the array
+  arr.push_back(22);
+  arr.push_back(46);
+  arr.push_back(94);
+  arr.push_back(12);
+  arr.push_back(37);
+  arr.push_back(63);
+  // array populating ends
 
-    sorting::recursive_bubble_sort(&arr, size);
-    assert(std::is_sorted(std::begin(arr), std::end(arr)));
-    std::cout << " 1st test passed!\n";
-    // printing the array
-    for (uint64_t i = 0; i < size; i++) {
-        std::cout << arr[i] << ", ";
-    }
-    std::cout << std::endl;
+  sorting::recursive_bubble_sort(&arr, size);
+  assert(std::is_sorted(std::begin(arr), std::end(arr)));
+  std::cout << " 1st test passed!\n";
+  // printing the array
+  for (uint64_t i = 0; i < size; i++) {
+    std::cout << arr[i] << ", ";
+  }
+  std::cout << std::endl;
 
-    // 2nd example. Creating an array of type `double`.
-    std::cout << "2nd test using doubles\n";
-    std::vector<double> double_arr;
+  // 2nd example. Creating an array of type `double`.
+  std::cout << "2nd test using doubles\n";
+  std::vector<double> double_arr;
 
-    // populating the array
-    double_arr.push_back(20.4);
-    double_arr.push_back(62.7);
-    double_arr.push_back(12.2);
-    double_arr.push_back(43.6);
-    double_arr.push_back(74.1);
-    double_arr.push_back(57.9);
-    // array populating ends
+  // populating the array
+  double_arr.push_back(20.4);
+  double_arr.push_back(62.7);
+  double_arr.push_back(12.2);
+  double_arr.push_back(43.6);
+  double_arr.push_back(74.1);
+  double_arr.push_back(57.9);
+  // array populating ends
 
-    sorting::recursive_bubble_sort(&double_arr, size);
-    assert(std::is_sorted(std::begin(double_arr), std::end(double_arr)));
-    std::cout << " 2nd test passed!\n";
-    // printing the array
-    for (uint64_t i = 0; i < size; i++) {
-        std::cout << double_arr[i] << ", ";
-    }
-    std::cout << std::endl;
-
+  sorting::recursive_bubble_sort(&double_arr, size);
+  assert(std::is_sorted(std::begin(double_arr), std::end(double_arr)));
+  std::cout << " 2nd test passed!\n";
+  // printing the array
+  for (uint64_t i = 0; i < size; i++) {
+    std::cout << double_arr[i] << ", ";
+  }
+  std::cout << std::endl;
 }
 
 /**
  * @brief Main function
  * @returns 0 on exit
  */
-int main() { 
-    test();  // run self-test implementations
-    return 0;
+int main() {
+  test();  // run self-test implementations
+  return 0;
 }

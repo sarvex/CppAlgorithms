@@ -23,9 +23,6 @@
  *  Have defined maximum dimension of vectors to be 10 and number of vectors
  *  taken is 20.
  *  Please do not give linearly dependent vectors
- *
- *
- * @author [Akanksha Gupta](https://github.com/Akanksha-Gupta920)
  */
 
 #include <array>     /// for std::array

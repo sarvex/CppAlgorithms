@@ -18,7 +18,6 @@
  * print median(A) #should be 39
  * print median(B) #should be 4
  *
- * @author [Benjamin Weiss](https://github.com/weiss-ben)
  * @see median_search.cpp
  */
 

@@ -6,7 +6,6 @@
  * which the last node has a pointer to the first node, which creates a full
  * circle. Consequently, this allows any node to be used as the starting point
  * for the list.
- * @author [Alvin](https://github.com/polarvoid)
  */
 
 #include <cassert>   /// for assert

@@ -24,16 +24,16 @@
  * @return is_prime a vector of `N + 1` booleans identifying if `i`^th number is a prime or not
  */
 std::vector<bool> sieve(uint32_t N) {
-    std::vector<bool> is_prime(N + 1, true);
-    is_prime[0] = is_prime[1] = false;
-    for (uint32_t i = 2; i * i <= N; i++) {
-        if (is_prime[i]) {
-            for (uint32_t j = i * i; j <= N; j += i) {
-                is_prime[j] = false;
-            }
-        }
+  std::vector<bool> is_prime(N + 1, true);
+  is_prime[0] = is_prime[1] = false;
+  for (uint32_t i = 2; i * i <= N; i++) {
+    if (is_prime[i]) {
+      for (uint32_t j = i * i; j <= N; j += i) {
+        is_prime[j] = false;
+      }
     }
-    return is_prime;
+  }
+  return is_prime;
 }
 
 /**
@@ -42,12 +42,12 @@ std::vector<bool> sieve(uint32_t N) {
  * @param is_prime a vector of `N + 1` booleans identifying if `i`^th number is a prime or not
  */
 void print(uint32_t N, const std::vector<bool> &is_prime) {
-    for (uint32_t i = 2; i <= N; i++) {
-        if (is_prime[i]) {
-            std::cout << i << ' ';
-        }
+  for (uint32_t i = 2; i <= N; i++) {
+    if (is_prime[i]) {
+      std::cout << i << ' ';
     }
-    std::cout << std::endl;
+  }
+  std::cout << std::endl;
 }
 
 /**
@@ -63,10 +63,10 @@ void tests() {
  * Main function
  */
 int main() {
-    tests();
+  tests();
 
-    uint32_t N = 100;
-    std::vector<bool> is_prime = sieve(N);
-    print(N, is_prime);
-    return 0;
+  uint32_t N = 100;
+  std::vector<bool> is_prime = sieve(N);
+  print(N, is_prime);
+  return 0;
 }

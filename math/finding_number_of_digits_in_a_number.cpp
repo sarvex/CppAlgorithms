@@ -1,5 +1,4 @@
 /**
- * @author [aminos 🇮🇳](https://github.com/amino19)
  * @file
  *
  * @brief [Program to count digits
@@ -28,19 +27,19 @@
  * @returns the digits count
  */
 uint64_t finding_number_of_digits_in_a_number(uint64_t n) {
-    uint64_t count = 0;  ///< the variable used for the digits count
+  uint64_t count = 0;  ///< the variable used for the digits count
 
-    // iterate until `n` becomes 0
-    // remove last digit from `n` in each iteration
-    // increase `count` by 1 in each iteration
-    while (n != 0) {
-        // we can also use `n = n / 10`
-        n /= 10;
-        // each time the loop is running, `count` will be incremented by 1.
-        ++count;
-    }
+  // iterate until `n` becomes 0
+  // remove last digit from `n` in each iteration
+  // increase `count` by 1 in each iteration
+  while (n != 0) {
+    // we can also use `n = n / 10`
+    n /= 10;
+    // each time the loop is running, `count` will be incremented by 1.
+    ++count;
+  }
 
-    return count;
+  return count;
 }
 
 /**
@@ -51,19 +50,19 @@ uint64_t finding_number_of_digits_in_a_number(uint64_t n) {
  * @returns the digits count
  */
 double finding_number_of_digits_in_a_number_using_log(double n) {
-    // log(0) is undefined
-    if (n == 0) {
-        return 0;
-    }
+  // log(0) is undefined
+  if (n == 0) {
+    return 0;
+  }
 
-    // to handle the negative numbers
-    if (n < 0) {
-        n = -n;
-    }
+  // to handle the negative numbers
+  if (n < 0) {
+    n = -n;
+  }
 
-    double count = floor(log10(n) + 1);
+  double count = floor(log10(n) + 1);
 
-    return count;
+  return count;
 }
 
 /**
@@ -71,32 +70,32 @@ double finding_number_of_digits_in_a_number_using_log(double n) {
  * @returns void
  */
 static void first_test() {
-    assert(finding_number_of_digits_in_a_number(5492) == 4);
-    assert(finding_number_of_digits_in_a_number(-0) == 0);
-    assert(finding_number_of_digits_in_a_number(10000) == 5);
-    assert(finding_number_of_digits_in_a_number(9) == 1);
-    assert(finding_number_of_digits_in_a_number(100000) == 6);
-    assert(finding_number_of_digits_in_a_number(13) == 2);
-    assert(finding_number_of_digits_in_a_number(564) == 3);
+  assert(finding_number_of_digits_in_a_number(5492) == 4);
+  assert(finding_number_of_digits_in_a_number(-0) == 0);
+  assert(finding_number_of_digits_in_a_number(10000) == 5);
+  assert(finding_number_of_digits_in_a_number(9) == 1);
+  assert(finding_number_of_digits_in_a_number(100000) == 6);
+  assert(finding_number_of_digits_in_a_number(13) == 2);
+  assert(finding_number_of_digits_in_a_number(564) == 3);
 }
 
 static void second_test() {
-    assert(finding_number_of_digits_in_a_number_using_log(5492) == 4);
-    assert(finding_number_of_digits_in_a_number_using_log(-0) == 0);
-    assert(finding_number_of_digits_in_a_number_using_log(10000) == 5);
-    assert(finding_number_of_digits_in_a_number_using_log(9) == 1);
-    assert(finding_number_of_digits_in_a_number_using_log(100000) == 6);
-    assert(finding_number_of_digits_in_a_number_using_log(13) == 2);
-    assert(finding_number_of_digits_in_a_number_using_log(564) == 3);
+  assert(finding_number_of_digits_in_a_number_using_log(5492) == 4);
+  assert(finding_number_of_digits_in_a_number_using_log(-0) == 0);
+  assert(finding_number_of_digits_in_a_number_using_log(10000) == 5);
+  assert(finding_number_of_digits_in_a_number_using_log(9) == 1);
+  assert(finding_number_of_digits_in_a_number_using_log(100000) == 6);
+  assert(finding_number_of_digits_in_a_number_using_log(13) == 2);
+  assert(finding_number_of_digits_in_a_number_using_log(564) == 3);
 }
 /**
  * @brief Main function
  * @returns 0 on exit
  */
 int main() {
-    // run self-test implementations
-    first_test();
-    second_test();
-    std::cout << "All tests have successfully passed!\n";
-    return 0;
+  // run self-test implementations
+  first_test();
+  second_test();
+  std::cout << "All tests have successfully passed!\n";
+  return 0;
 }

@@ -2,7 +2,6 @@
  * \file
  * \brief [LU decomposition](https://en.wikipedia.org/wiki/LU_decompositon) of a
  * square matrix
- * \author [Krishna Vedala](https://github.com/kvedala)
  */
 #include <cassert>
 #include <ctime>

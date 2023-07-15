@@ -47,8 +47,6 @@
  * subtree. If we visit the right subtree before visiting the left subtree, it
  * is referred to as reverse postorder traversal.
  *
- * @author [Lajat Manekar](https://github.com/Lazeeez)
- *
  */
 
 #include <cassert>   /// for assert

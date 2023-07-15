@@ -30,8 +30,6 @@
  * Average time complexity	    O(log n)
  * Worst-case space complexity  0(1)
  *
- * @author [Lajat Manekar](https://github.com/Lazeeez)
- * @author Unknown author
  *******************************************************************************/
 
 #include <algorithm>  /// for std::sort function

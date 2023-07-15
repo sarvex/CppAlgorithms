@@ -7,7 +7,6 @@
  * i.e, O(m + n), where m is number of rows and n is number of columns of 2D array. Also, each row and
  * column of the matrix should be sorted beforehand for this algorithm to work.
  *
- * @author [Hashir Niazi](https://github.com/HashirGJ8842)
  */
 #include <cassert>      /// for assert
 #include <iostream>     /// for io operations, and std::pair

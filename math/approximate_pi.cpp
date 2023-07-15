@@ -3,15 +3,13 @@
  * @brief Implementation to calculate an estimate of the [number π (Pi)](https://en.wikipedia.org/wiki/File:Pi_30K.gif).
  *
  * @details
- * We take a random point P with coordinates (x, y) such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1. If x² + y² ≤ 1, then the 
+ * We take a random point P with coordinates (x, y) such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1. If x² + y² ≤ 1, then the
  * point is inside the quarter disk of radius 1, otherwise the point is outside.
  * We know that the probability of the point being inside the quarter disk is equal to π/4
- * double approx(vector<Point> &pts) which will use the points pts (drawn at random) to 
+ * double approx(vector<Point> &pts) which will use the points pts (drawn at random) to
  * return an estimate of the number π
  * \note This implementation is better than naive recursive or iterative
  * approach.
- *
- * @author [Qannaf AL-SAHMI](https://github.com/Qannaf)
  */
 
 #include <iostream>  /// for IO operations
@@ -25,7 +23,7 @@
 namespace math {
 
     /**
-     * structure of points containing two numbers, respectively x and y such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1. 
+     * structure of points containing two numbers, respectively x and y such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1.
     */
     typedef struct {
     double x;
@@ -35,8 +33,8 @@ namespace math {
     double  approximate_pi(const std::vector<Point> &pts) {
     /**
      * This function use the points pts (drawn at random) to return an estimate of the number π  using the given points
-     * @param pts Each item of pts contains a point. A point is represented by a structure containing exactly 
-     * two numbers, respectively x and y such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1. 
+     * @param pts Each item of pts contains a point. A point is represented by a structure containing exactly
+     * two numbers, respectively x and y such that 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1.
      * pts always contains at least one item
      * @return  an estimate of the number π
      */
@@ -45,7 +43,7 @@ namespace math {
             for(Point p:pts)
                 if(p.x * p.x + p.y*p.y <= 1)
                     ++count;
-            
+
             return 4.0*count/pts.size();
         }
     }

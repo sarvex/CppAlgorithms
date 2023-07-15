@@ -6,7 +6,6 @@
  * All shapes have a formula for their perimeter.
  * These implementations support multiple return types.
  *
- * @author [OGscorpion](https://github.com/OGscorpion)
  */
 #define _USE_MATH_DEFINES
 #include <cassert>   /// for assert

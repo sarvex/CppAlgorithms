@@ -34,8 +34,6 @@
  * print median_of_medians(A,7) #should be 99
  * print median_of_medians(B,4) #should be 5
  *
- * @author Unknown author
- * @author [Sushil Kumar](https://github.com/Rp-sushil)
  */
 
 #include <iostream>
@@ -58,7 +56,7 @@ namespace median_search {
 * @param A array where numbers are saved
 * @param idx current index in array
 * @returns corresponding element which we want to search.
-*/  
+*/
 int median_of_medians(const std::vector<int>& A,  const int& idx) {
 	int pivot = 0;					// initialized with zero
 	std::vector<int> a(A.begin(), A.end());
@@ -109,12 +107,12 @@ void test(){
 	int i = 3;
 	assert(A[6] == search::median_search::median_of_medians(A, i));		// A[6]  = 43, is the fourth smallest element.
 	std::cout << "test case:1 passed\n";
-	
+
 	std::vector<int> B{1,2,3,4,5,6};
 	int j = 4;
 	assert(B[4] == search::median_search::median_of_medians(B, j));		// B[4] = 5, is the fifth smallest element.
 	std::cout << "test case:2 passed\n";
-	
+
 	std::vector<int> C{1,2,3,4,5,1000,8,9,99};
 	int k = 3;
 	assert(C[3] == search::median_search::median_of_medians(C, k)); 	// C[3] = 4, is the fourth smallest element.
@@ -153,4 +151,3 @@ int main()
 	std::cout << idx + 1<< "-th smallest element: " << search::median_search::median_of_medians(a, idx) << '\n';
 	return 0;
 }
-

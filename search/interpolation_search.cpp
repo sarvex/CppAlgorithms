@@ -25,8 +25,6 @@
  * Average time complexity	    O(log2(log2 n))
  * space complexity  0(1)
  *
- * @author [Lajat Manekar](https://github.com/Lazeeez)
- * @author Unknown author
  *******************************************************************************/
 
 #include <algorithm>  /// for std::sort function

@@ -1,5 +1,5 @@
-add_executable( cll 
-    cll.cpp 
-    main_cll.cpp 
+add_executable(
+    circular_linked_list.cpp
+    main.cpp
 )
-install(TARGETS cll DESTINATION "bin/data_structures")
+install(TARGETS circular_linked_list DESTINATION "bin/data_structures")

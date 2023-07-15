@@ -8,7 +8,6 @@
  * number in the input array, this algorithm returns the duplicate number in
  * O(1) space and the time complexity is less than O(n^2) without modifying the
  * original array, otherwise, it returns -1.
- * @author [Swastika Gupta](https://github.com/Swastyy)
  */
 
 #include <cassert>   /// for assert

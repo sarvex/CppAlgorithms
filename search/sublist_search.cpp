@@ -22,7 +22,6 @@
  *  * If the two values don't match, it goes to the next element of the
  *  second list. It does this until the two values match.
  *
- * @author [Nitin Sharma](https://github.com/foo290)
  */
 
 #include <cassert>   /// for assert

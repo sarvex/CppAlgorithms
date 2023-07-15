@@ -9,7 +9,6 @@
  * x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}
  * \f]
  *
- * \author [Krishna Vedala](https://github.com/kvedala)
  * \see bisection_method.cpp, false_position.cpp
  */
 #include <cmath>
@@ -27,7 +26,7 @@ constexpr int16_t MAX_ITERATIONS = INT16_MAX;  ///< Maximum number of iterations
  * \f]
  */
 static double eq(double i) {
-    return (std::pow(i, 3) - (4 * i) - 9);  // original equation
+  return (std::pow(i, 3) - (4 * i) - 9);  // original equation
 }
 
 /** define the derivative function \f$f'(x)\f$
@@ -37,31 +36,31 @@ static double eq(double i) {
  * \f]
  */
 static double eq_der(double i) {
-    return ((3 * std::pow(i, 2)) - 4);  // derivative of equation
+  return ((3 * std::pow(i, 2)) - 4);  // derivative of equation
 }
 
 /** Main function */
 int main() {
-    std::srand(std::time(nullptr));  // initialize randomizer
+  std::srand(std::time(nullptr));  // initialize randomizer
 
-    double z = NAN, c = std::rand() % 100, m = NAN, n = NAN;
-    int i = 0;
+  double z = NAN, c = std::rand() % 100, m = NAN, n = NAN;
+  int i = 0;
 
-    std::cout << "\nInitial approximation: " << c;
+  std::cout << "\nInitial approximation: " << c;
 
-    // start iterations
-    for (i = 0; i < MAX_ITERATIONS; i++) {
-        m = eq(c);
-        n = eq_der(c);
+  // start iterations
+  for (i = 0; i < MAX_ITERATIONS; i++) {
+    m = eq(c);
+    n = eq_der(c);
 
-        z = c - (m / n);
-        c = z;
+    z = c - (m / n);
+    c = z;
 
-        if (std::abs(m) < EPSILON) {  // stoping criteria
-            break;
-        }
+    if (std::abs(m) < EPSILON) {  // stoping criteria
+      break;
     }
+  }
 
-    std::cout << "\n\nRoot: " << z << "\t\tSteps: " << i << std::endl;
-    return 0;
+  std::cout << "\n\nRoot: " << z << "\t\tSteps: " << i << std::endl;
+  return 0;
 }

@@ -5,9 +5,6 @@
  *
  * @details A factorial number is the sum of k! where any value of k is a
  * positive integer. https://www.mathsisfun.com/numbers/factorial.html
- *
- * @author [Divyajyoti Ukirde](https://github.com/divyajyotiuk)
- * @author [ewd00010](https://github.com/ewd00010)
  */
 #include <cassert>   /// for assert
 #include <iostream>  /// for cout
@@ -17,16 +14,16 @@
  * @brief Mathematical algorithms
  */
 namespace math {
-/**
- * @brief Function to check if the given number is factorial of some number or
- * not.
- * @param n number to be checked.
- * @return true if number is a factorial returns true
- * @return false if number is not a factorial
- */
-bool is_factorial(uint64_t n) {
+  /**
+   * @brief Function to check if the given number is factorial of some number or
+   * not.
+   * @param n number to be checked.
+   * @return true if number is a factorial returns true
+   * @return false if number is not a factorial
+   */
+  bool is_factorial(uint64_t n) {
     if (n <= 0) {  // factorial numbers are only ever positive Integers
-        return false;
+      return false;
     }
 
     /*!
@@ -36,8 +33,8 @@ bool is_factorial(uint64_t n) {
      */
     int i = 2;
     while (n % i == 0) {
-        n = n / i;
-        i++;
+      n = n / i;
+      i++;
     }
 
     /*!
@@ -45,7 +42,7 @@ bool is_factorial(uint64_t n) {
      * becomes 1
      */
     return (n == 1);
-}
+  }
 }  // namespace math
 
 /**
@@ -53,14 +50,14 @@ bool is_factorial(uint64_t n) {
  * @returns void
  */
 static void tests() {
-    assert(math::is_factorial(50) == false);
-    assert(math::is_factorial(720) == true);
-    assert(math::is_factorial(0) == false);
-    assert(math::is_factorial(1) == true);
-    assert(math::is_factorial(479001600) == true);
-    assert(math::is_factorial(-24) == false);
+  assert(math::is_factorial(50) == false);
+  assert(math::is_factorial(720) == true);
+  assert(math::is_factorial(0) == false);
+  assert(math::is_factorial(1) == true);
+  assert(math::is_factorial(479001600) == true);
+  assert(math::is_factorial(-24) == false);
 
-    std::cout << "All tests have successfully passed!" << std::endl;
+  std::cout << "All tests have successfully passed!" << std::endl;
 }
 
 /**
@@ -68,6 +65,6 @@ static void tests() {
  * @returns 0 on exit
  */
 int main() {
-    tests();  // run self-test implementations
-    return 0;
+  tests();  // run self-test implementations
+  return 0;
 }

@@ -26,24 +26,21 @@
  */
 template <typename T = double, char iterations = 2>
 inline T Fast_InvSqrt(T x) {
-    using Tint = typename std::conditional<sizeof(T) == 8, std::int64_t,
-                                           std::int32_t>::type;
-    T y = x;
-    T x2 = y * 0.5;
+  using Tint = typename std::conditional<sizeof(T) == 8, std::int64_t, std::int32_t>::type;
+  T y = x;
+  T x2 = y * 0.5;
 
-    Tint i =
-        *reinterpret_cast<Tint *>(&y);  // Store floating-point bits in integer
+  Tint i = *reinterpret_cast<Tint *>(&y);  // Store floating-point bits in integer
 
-    i = (sizeof(T) == 8 ? 0x5fe6eb50c7b537a9 : 0x5f3759df) -
-        (i >> 1);  // Initial guess for Newton's method
+  i = (sizeof(T) == 8 ? 0x5fe6eb50c7b537a9 : 0x5f3759df) - (i >> 1);  // Initial guess for Newton's method
 
-    y = *reinterpret_cast<T *>(&i);  // Convert new bits into float
+  y = *reinterpret_cast<T *>(&i);  // Convert new bits into float
 
-    y = y * (1.5 - (x2 * y * y));  // 1st iteration Newton's method
-    if (iterations == 2) {
-        y = y * (1.5 - (x2 * y * y));  // 2nd iteration, the more exact result
-    }
-    return y;
+  y = y * (1.5 - (x2 * y * y));  // 1st iteration Newton's method
+  if (iterations == 2) {
+    y = y * (1.5 - (x2 * y * y));  // 2nd iteration, the more exact result
+  }
+  return y;
 }
 
 /**
@@ -57,8 +54,8 @@ inline T Fast_InvSqrt(T x) {
  */
 template <typename T = double>
 T Standard_InvSqrt(T number) {
-    T squareRoot = sqrt(number);
-    return 1.0f / squareRoot;
+  T squareRoot = sqrt(number);
+  return 1.0f / squareRoot;
 }
 
 /**
@@ -66,18 +63,18 @@ T Standard_InvSqrt(T number) {
  * @returns void
  */
 static void test() {
-    const float epsilon = 1e-3f;
+  const float epsilon = 1e-3f;
 
-    /* Tests with multiple values */
-    assert(std::fabs(Standard_InvSqrt<float>(100.0f) - 0.0998449f) < epsilon);
-    assert(std::fabs(Standard_InvSqrt<double>(36.0f) - 0.166667f) < epsilon);
-    assert(std::fabs(Standard_InvSqrt(12.0f) - 0.288423f) < epsilon);
-    assert(std::fabs(Standard_InvSqrt<double>(5.0f) - 0.447141f) < epsilon);
+  /* Tests with multiple values */
+  assert(std::fabs(Standard_InvSqrt<float>(100.0f) - 0.0998449f) < epsilon);
+  assert(std::fabs(Standard_InvSqrt<double>(36.0f) - 0.166667f) < epsilon);
+  assert(std::fabs(Standard_InvSqrt(12.0f) - 0.288423f) < epsilon);
+  assert(std::fabs(Standard_InvSqrt<double>(5.0f) - 0.447141f) < epsilon);
 
-    assert(std::fabs(Fast_InvSqrt<float, 1>(100.0f) - 0.0998449f) < epsilon);
-    assert(std::fabs(Fast_InvSqrt<double, 1>(36.0f) - 0.166667f) < epsilon);
-    assert(std::fabs(Fast_InvSqrt(12.0f) - 0.288423) < epsilon);
-    assert(std::fabs(Fast_InvSqrt<double>(5.0f) - 0.447141) < epsilon);
+  assert(std::fabs(Fast_InvSqrt<float, 1>(100.0f) - 0.0998449f) < epsilon);
+  assert(std::fabs(Fast_InvSqrt<double, 1>(36.0f) - 0.166667f) < epsilon);
+  assert(std::fabs(Fast_InvSqrt(12.0f) - 0.288423) < epsilon);
+  assert(std::fabs(Fast_InvSqrt<double>(5.0f) - 0.447141) < epsilon);
 }
 
 /**
@@ -85,19 +82,13 @@ static void test() {
  * @returns 0 on exit
  */
 int main() {
-    test();  // run self-test implementations
-    std::cout << "The Fast inverse square root of 36 is: "
-              << Fast_InvSqrt<float, 1>(36.0f) << std::endl;
-    std::cout << "The Fast inverse square root of 36 is: "
-              << Fast_InvSqrt<double, 2>(36.0f) << " (2 iterations)"
-              << std::endl;
-    std::cout << "The Fast inverse square root of 100 is: "
-              << Fast_InvSqrt(100.0f)
-              << " (With default template type and iterations: double, 2)"
-              << std::endl;
-    std::cout << "The Standard inverse square root of 36 is: "
-              << Standard_InvSqrt<float>(36.0f) << std::endl;
-    std::cout << "The Standard inverse square root of 100 is: "
-              << Standard_InvSqrt(100.0f)
-              << " (With default template type: double)" << std::endl;
+  test();  // run self-test implementations
+  std::cout << "The Fast inverse square root of 36 is: " << Fast_InvSqrt<float, 1>(36.0f) << std::endl;
+  std::cout << "The Fast inverse square root of 36 is: " << Fast_InvSqrt<double, 2>(36.0f) << " (2 iterations)"
+            << std::endl;
+  std::cout << "The Fast inverse square root of 100 is: " << Fast_InvSqrt(100.0f)
+            << " (With default template type and iterations: double, 2)" << std::endl;
+  std::cout << "The Standard inverse square root of 36 is: " << Standard_InvSqrt<float>(36.0f) << std::endl;
+  std::cout << "The Standard inverse square root of 100 is: " << Standard_InvSqrt(100.0f)
+            << " (With default template type: double)" << std::endl;
 }
